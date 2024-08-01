@@ -34,7 +34,15 @@ class CardioThoraricController extends Controller
             )
             ->join('surgery_types', 'cardio_thoraric.surgery_id', 'surgery_types.id')
             ->get();
-        $surgeries = DB::table('surgery_types')->select('id', 'surgery_name')->get();
+
+        $priority_surgeries = ['CABG', 'MVR', 'AVR', 'ASD Closure', 'PAPVD Repair', 'Atrial Myxoma Excision'];
+        $surgeries = DB::table('surgery_types')
+            ->select('id', 'surgery_name')
+            ->orderByRaw('FIELD(surgery_name, ' . implode(', ', array_map(function ($surgery) {
+                return "'" . $surgery . "'";
+            }, $priority_surgeries)) . ') DESC')
+            ->orderBy('surgery_name')
+            ->get();
 
         return view('pages.cardio', compact('surgeries', 'cardios'));
     }
@@ -54,11 +62,11 @@ class CardioThoraricController extends Controller
             ->orWhere('patientContactMobile02', $searchTerm)
             ->get();
 
-            if ($patients->isEmpty()) {
-                return response()->json(null, 404);
-            }
-    
-            return response()->json($patients->first());
+        if ($patients->isEmpty()) {
+            return response()->json(['message' => 'No data found'], 404);
+        }
+
+        return response()->json($patients->first());
     }
 
     public function save(Request $request)
@@ -73,7 +81,7 @@ class CardioThoraricController extends Controller
             $surgery = new CardioThoraric();
         } else { // update
             $this->validate($request, [
-                'ctu_number' => 'unique:cardio_thoraric,ctu_number,' .$id
+                'ctu_number' => 'unique:cardio_thoraric,ctu_number,' . $id
             ]);
             $surgery = CardioThoraric::find($id);
         }

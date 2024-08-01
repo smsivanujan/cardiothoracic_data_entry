@@ -8,9 +8,6 @@
 
 <!-- PAGE-HEADER -->
 <div class="page-header">
-    <!-- <div>
-            <h1 class="page-title">Dashboard</h1>
-        </div> -->
     <div class="ms-auto pageheader-btn">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
@@ -39,21 +36,21 @@
                             <tr>
                                 <th>Action</th>
                                 <th>No</th>
+                                <th>Status</th>
                                 <th>CTU Number</th>
                                 <th>Surgery</th>
-                                <th>Prefix</th>
+                                <!-- <th>Prefix</th> -->
                                 <th>Full Name</th>
-                                <th>Gender</th>
-                                <th>Age</th>
                                 <th>Contact Number 1</th>
                                 <th>Contact Number 2</th>
+                                <th>Gender</th>
+                                <th>Age</th>
                                 <th>Address</th>
                                 <th>District</th>
                                 <th>EF%</th>
                                 <th>Diagnosis</th>
                                 <th>Comments</th>
                                 <th>CTS</th>
-                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,21 +62,21 @@
                                     </a>
                                 </td>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $row->status }}</td>
                                 <td>{{ $row->ctu_number }}</td>
                                 <td>{{ $row->surgery_name }}</td>
-                                <td>{{ $row->prefix }}</td>
+                                <!-- <td>{{ $row->prefix }}</td> -->
                                 <td>{{ $row->full_name }}</td>
-                                <td>{{ $row->gender }}</td>
-                                <td>{{ $row->age }}</td>
                                 <td>{{ $row->contact_number_1 }}</td>
                                 <td>{{ $row->contact_number_2 }}</td>
+                                <td>{{ $row->gender }}</td>
+                                <td>{{ $row->age }}</td>
                                 <td>{{ $row->address }}</td>
                                 <td>{{ $row->district }}</td>
                                 <td>{{ $row->ef }}</td>
                                 <td>{{ $row->diagnosis }}</td>
                                 <td>{{ $row->comments }}</td>
                                 <td>{{ $row->cts }}</td>
-                                <td>{{ $row->status }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -111,6 +108,7 @@
                         </div>
                     </form>
                     <label for="">Search with PHN/NIC/Passport/BHT/Phone Number(Handphone or Landline)</label>
+                    <div id="search-result" class="mt-3 text-red"></div>
                 </div>
             </div>
             <div class="modal-body text-start">
@@ -278,6 +276,43 @@
 @endsection
 
 @section('scripts')
+
+<script>
+    document.getElementById('search-button').addEventListener('click', function() {
+        var searchTerm = document.getElementById('search-box').value;
+
+        fetch('{{ route('patient.search') }}?search-term=' + encodeURIComponent(searchTerm))
+            .then(response => response.json())
+            .then(data => {
+                var resultContainer = document.getElementById('search-result');
+                if (data.message) {
+                    resultContainer.textContent = data.message;
+
+                    $("#id").val(0);
+                    $("#ctu_number").val('');
+                    $("#surgery_id").val('').trigger('change');
+                    $("#prefix").val('');
+                    $("#full_name").val('');
+                    $("#gender").val('');
+                    $("#age").val('');
+                    $("#contact_number_1").val('');
+                    $("#contact_number_2").val('');
+                    $("#district").val('').trigger('change');
+                    $("#address").val('');
+                    $("#ef").val('');
+                    $("#diagnosis").val('');
+                    $("#comments").val('');
+                    $("#cts").val('');
+                    $("#status").val('').trigger('change');
+                } else {
+                    // ("#search-result").val('');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error.message);
+            });
+    });
+</script>
 
 <script>
     function calculateAge(dateOfBirth) {

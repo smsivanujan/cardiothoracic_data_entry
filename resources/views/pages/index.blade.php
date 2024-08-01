@@ -51,7 +51,7 @@
                         @foreach ($total_waiting_patients as $item)
                         <h3 class="mb-2 fw-semibold">{{$item->totalWaitingPatient}}</h3>
                         @endforeach
-                        <p class="text-muted fs-13 mb-0">Total Waiting Patients</p>
+                        <p class="text-muted fs-13 mb-0">Waiting Patients</p>
                     </div>
                     <div class="col col-auto top-icn dash">
                         <div class="counter-icon bg-primary dash ms-auto box-shadow-primary">
@@ -72,7 +72,7 @@
                         @foreach ($total_sucessfull_patients as $item)
                         <h3 class="mb-2 fw-semibold">{{$item->totalSucessfullPatient}}</h3>
                         @endforeach
-                        <p class="text-muted fs-13 mb-0">Total Waiting Patients</p>
+                        <p class="text-muted fs-13 mb-0">Surgery Complete Patients</p>
                     </div>
                     <div class="col col-auto top-icn dash">
                         <div class="counter-icon bg-primary dash ms-auto box-shadow-primary">
@@ -93,7 +93,7 @@
                         @foreach ($total_other_patients as $item)
                         <h3 class="mb-2 fw-semibold">{{$item->totalOtherPatient}}</h3>
                         @endforeach
-                        <p class="text-muted fs-13 mb-0">Total Other Patients</p>
+                        <p class="text-muted fs-13 mb-0">Other Patients</p>
                     </div>
                     <div class="col col-auto top-icn dash">
                         <div class="counter-icon bg-primary dash ms-auto box-shadow-primary">

@@ -5,11 +5,9 @@ use App\Http\Controllers\AcesssPointController;
 use App\Http\Controllers\CardioThoraricController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SurgeryController;
 use App\Http\Controllers\SurgeryTypeController;
 use App\Http\Controllers\UserController;
-use App\Models\SurgeryType;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'token'])->name('user.token');
@@ -50,11 +48,7 @@ Route::group(['middleware' => ['auth']], function () { //'CheckAccess'
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('index.dashboard');
 
-    //role
-    Route::get('role/show', [RoleController::class, 'index'])->name('role.index');
-    Route::post('role/store', [RoleController::class, 'store'])->name('role.store');
-
-     //role
+     //surgeryType
      Route::get('surgeryType/show', [SurgeryTypeController::class, 'index'])->name('surgeryType.index');
      Route::post('surgeryType/store', [SurgeryTypeController::class, 'save'])->name('surgeryType.store');
 
