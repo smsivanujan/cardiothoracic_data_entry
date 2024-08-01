@@ -16,7 +16,7 @@ class AcesssPointController extends Controller
         $access_model = AcesssModel::find($id);
         $access_point = AcesssPoint::where('access_model_id', $id)->get();
 
-        return view('layouts.auth.accesspoint')
+        return view('layouts.auth.accessPoint')
         ->with('access_model', $access_model)
         ->with('access_point', $access_point);
     }
