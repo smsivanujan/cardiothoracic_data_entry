@@ -31,7 +31,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered text-nowrap border-bottom Cardio-table" id="file-datatable">
+                    <table class="table table-bordered text-nowrap border-bottom Cardio-table" id="responsive-datatable">
                         <thead>
                             <tr>
                                 <th>Action</th>
@@ -39,7 +39,6 @@
                                 <th>Status</th>
                                 <th>CTU Number</th>
                                 <th>Surgery</th>
-                                <!-- <th>Prefix</th> -->
                                 <th>Full Name</th>
                                 <th>Contact Number 1</th>
                                 <th>Contact Number 2</th>
@@ -65,8 +64,7 @@
                                 <td>{{ $row->status }}</td>
                                 <td>{{ $row->ctu_number }}</td>
                                 <td>{{ $row->surgery_name }}</td>
-                                <!-- <td>{{ $row->prefix }}</td> -->
-                                <td>{{ $row->full_name }}</td>
+                                <td> {{ $row->prefix }} {{ $row->full_name }}</td>
                                 <td>{{ $row->contact_number_1 }}</td>
                                 <td>{{ $row->contact_number_2 }}</td>
                                 <td>{{ $row->gender }}</td>
@@ -126,6 +124,7 @@
                             <label for="surgery">Surgery <span class="required text-red">*</span></label>
                             <select class="form-control select2-show-search form-select" data-placeholder="Choose Surgery" name="surgery" id="surgery" required>
                                 <option label="Choose"></option>
+                                <option label="All">All</option>
                                 @foreach ($surgeries as $item)
                                 <option value="{{ $item->id }}" {{ old('surgery_id') == $item->id ? 'selected' : '' }}>
                                     {{ $item->surgery_name }}
@@ -282,7 +281,8 @@
     document.getElementById('search-button').addEventListener('click', function() {
         var searchTerm = document.getElementById('search-box').value;
 
-        fetch('{{ route('patient.search') }}?search-term=' + encodeURIComponent(searchTerm))
+        fetch('{{ route('
+                patient.search ') }}?search-term=' + encodeURIComponent(searchTerm))
             .then(response => response.json())
             .then(data => {
                 var resultContainer = document.getElementById('search-result');
@@ -361,7 +361,7 @@
 <script>
     $(document).ready(function() {
         // show modal on backend validation error
-        if (!@json($errors -> isEmpty())) {
+        if (!@json($errors - > isEmpty())) {
             $('#modal_').modal('show');
             var id = $('#id').val();
             if (id == 0) {

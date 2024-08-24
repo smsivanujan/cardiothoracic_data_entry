@@ -28,6 +28,7 @@
                                 </a>
                             </li>
                             @endif
+
                             @if (in_array('cardio.index', $Access))
                             <li class="slide">
                                 <a class="side-menu__item" href="{{ route('cardio.index') }}">
@@ -42,6 +43,24 @@
                                     <div class="fe fe-scissors side-menu__icon"></div>
                                     <span class="side-menu__label">Surgery Types</span>
                                 </a>
+                            </li>
+                            @endif
+
+                            @if (in_array('user.index', $Access) || in_array('cardio.cardioReport', $Access))
+                            <li>
+                                <h3>Reports</h3>
+                            </li>
+
+                            <li class="slide">
+                                <a class="side-menu__item" data-bs-toggle="slide" href="#">
+                                    <div class="fe fe-lock side-menu__icon"></div>
+                                    <span class="side-menu__label">Reports</span><i class="angle fa fa-angle-right"></i>
+                                </a>
+                                <ul class="slide-menu">
+                                    @if (in_array('cardio.cardioReport', $Access))
+                                    <li><a href="{{ route('cardio.cardioReport') }}" class="slide-item">Cardio by Status</a></li>
+                                    @endif
+                                </ul>
                             </li>
                             @endif
 

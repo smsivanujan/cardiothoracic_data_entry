@@ -5,6 +5,7 @@ use App\Http\Controllers\AcesssPointController;
 use App\Http\Controllers\CardioThoraricController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SurgeryTypeController;
 use App\Http\Controllers\UserController;
 
@@ -57,4 +58,7 @@ Route::group(['middleware' => ['auth']], function () { //'CheckAccess'
     Route::get('/cardio', [CardioThoraricController::class, 'index'])->name('cardio.index');
     Route::get('/search', [CardioThoraricController::class, 'search'])->name('patient.search');
     Route::post('cardio/save', [CardioThoraricController::class, 'save'])->name('cardio.save');
+
+    //Report
+    Route::get('cardioStatusReport', [ReportController::class, 'cardioByStatus'])->name('cardio.cardioReport');
 });
