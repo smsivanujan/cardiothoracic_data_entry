@@ -132,11 +132,6 @@
 
 @section('scripts')
 
-<!-- CHARTJS JS -->
-<script src="../assets/plugins/chart/Chart.bundle.js"></script>
-<script src="../assets/plugins/chart/utils.js"></script>
-<script src="../assets/js/chart.js"></script>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const ctx = document.getElementById('chartDonut').getContext('2d');

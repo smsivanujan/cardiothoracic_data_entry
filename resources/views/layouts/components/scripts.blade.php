@@ -17,15 +17,20 @@
 <!-- DATA TABLE JS-->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-<script src="../assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
-<script src="../assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
-<script src="../assets/plugins/datatable/js/jszip.min.js"></script>
-<script src="../assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
-<script src="../assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
-<script src="../assets/plugins/datatable/js/buttons.html5.min.js"></script>
-<script src="../assets/plugins/datatable/dataTables.responsive.min.js"></script>
-<script src="../assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
-<script src="../assets/js/table-data.js"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/js/table-data.js') }}"></script>
+
+<!-- CHARTJS JS -->
+<script src="{{ asset('assets/plugins/chart/Chart.bundle.js') }}"></script>
+<script src="{{ asset('assets/plugins/chart/utils.js') }}"></script>
+<script src="{{ asset('assets/js/chart.js') }}"></script>
 
 <!-- Perfect SCROLLBAR JS-->
 <script src="{{asset('assets/plugins/p-scroll/perfect-scrollbar.js')}}"></script>
@@ -35,13 +40,13 @@
 <script src="{{asset('assets/js/sticky.js')}}"></script>
 
 <!-- SELECT2 JS -->
-<script src="../assets/plugins/select2/select2.full.min.js"></script>
+<script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
 
 <!-- FORM ELEMENTS JS -->
-<script src="../assets/js/formelementadvnced.js"></script>
+<script src="{{ asset('assets/js/formelementadvnced.js') }}"></script>
 
 <!-- FORMVALIDATION JS -->
-<script src="../assets/js/form-validation.js"></script>
+<script src="{{ asset('assets/js/form-validation.js') }}"></script>
 
 @yield('scripts')
 
