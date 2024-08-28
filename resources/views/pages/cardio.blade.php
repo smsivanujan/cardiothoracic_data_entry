@@ -281,8 +281,7 @@
     document.getElementById('search-button').addEventListener('click', function() {
         var searchTerm = document.getElementById('search-box').value;
 
-        fetch('{{ route('
-                patient.search ') }}?search-term=' + encodeURIComponent(searchTerm))
+        fetch('{{ route('patient.search') }}?search-term=' + encodeURIComponent(searchTerm))
             .then(response => response.json())
             .then(data => {
                 var resultContainer = document.getElementById('search-result');
@@ -361,7 +360,7 @@
 <script>
     $(document).ready(function() {
         // show modal on backend validation error
-        if (!@json($errors - > isEmpty())) {
+        if (!@json($errors -> isEmpty())) {
             $('#modal_').modal('show');
             var id = $('#id').val();
             if (id == 0) {
